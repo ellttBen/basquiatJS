@@ -1,35 +1,15 @@
 
 
-// const IPFS = require('ipfs');
 const MultiImage = require('./MultiImage');
 const Parser = require('./cfgParser');
 const Processor = require('./ImageProcessing');
-// import MultiImage from "MultiImage";
-// import init from "MultiImage";
-// console.log("Hello world");
 
 
 
 async function main() {
 
-    // const node = await IPFS.create({ repo: String(Math.random() + Date.now()) });
-    // console.log("ipfs node is ready");
-
-
-    // const obj = await getDataBuffer("pictures/cat.jpg");
-    // // console.log(obj);
-    // const child = await getDataBuffer("pictures/640_400.jpg");
-    // console.log(child);
     const renderButton = document.getElementById("render");
     renderButton.addEventListener("click", render);
-    // const output = await MultiImage.init();
-    // await output.addOriginal(obj);
-    // await output.addChild(child, "640_400.jpg");
-    //
-    // const parser = new Parser();
-    // const configs = parser.parse();
-
-    // console.log(output.cid)
 
 }
 
