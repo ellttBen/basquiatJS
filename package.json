@@ -1,0 +1,25 @@
+{
+  "name": "basquiatjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "bundle": "cd src && browserify main.js > ../dist/bundle.js",
+    "debug-bundle": "cd src && browserify --debug main.js > ../dist/bundle.js",
+    "start": "npm run bundle && npm run release",
+    "clean": "rm -rf dist/bundle.js",
+    "release": "npm run clean && npm run bundle && ipfs add -Qr dist",
+    "debug-release": "npm run clean && npm run debug-bundle && ipfs add -Qr dist | xargs printf 'http://localhost:8080/ipfs/%s\n'"
+  },
+  "devDependencies": {
+    "browserify": "^16.5.1",
+    "pica": "^5.1.0",
+    "ipfs": "^0.43.3",
+    "ipld": "^0.26.2"
+  },
+  "browser": "basquiatJS/src/index.html",
+  "dependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babelify": "^10.0.0"
+  }
+}
