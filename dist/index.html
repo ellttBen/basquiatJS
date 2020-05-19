@@ -25,7 +25,14 @@ _x300
 
 <input type="file" id="input"> <br>
 <button type="button" id="render">Render</button> <br>
-<div id="cid"></div>
+<div id="output" hidden="true">
+    <div id="cid"></div> <br>
+    <h4>View on cloudflare gateway (this might take a minute or two to propagate):</h4>
+    <ul>
+        <li><a id="cid-gateway" target="_blank">Root</a></li>
+        <li><a id="thumbnails-gateway" target="_blank">Thumbnails</a></li>
+    </ul>
+</div>
 </body>
 <!--<script src="main.js"></script>-->
 <script src="bundle.js"></script>
