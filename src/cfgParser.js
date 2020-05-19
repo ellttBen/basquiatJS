@@ -1,12 +1,12 @@
 class Parser {
-    constructor(){
-        this.raw = document.getElementById("config").innerText.split(/\r?\n/);
+    constructor(config){
+        this.raw = config;
     }
 
     parse(){
         let configs = this.raw.map((el) => this.parse_line(el));
         configs = configs.filter((el) => el != null);
-        console.log(configs);
+        // console.log(configs);
         return configs
     }
 

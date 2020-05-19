@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "bundle": "cd src && browserify main.js > ../dist/bundle.js",
-    "debug-bundle": "cd src && browserify --debug main.js > ../dist/bundle.js",
+    "bundle": "cd src && browserify demo.js > ../dist/bundle.js",
+    "debug-bundle": "cd src && browserify --debug demo.js > ../dist/bundle.js",
     "start": "npm run bundle && npm run release",
     "clean": "rm -rf dist/bundle.js",
     "release": "npm run clean && npm run bundle && ipfs add -Qr dist | xargs printf 'http://localhost:8080/ipfs/%s\n",

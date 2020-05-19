@@ -4,6 +4,8 @@ const ipfs = require('./MultiImage');
 const Parser = require('./cfgParser');
 const Processor = require('./ImageProcessing');
 
+const basquiat_lib = require('./lib');
+
 
 
 async function main() {
@@ -14,30 +16,14 @@ async function main() {
 }
 
 async function render(){
+
     const file = document.getElementById("input").files[0];
-    const original_name = file.name;
-    const obj = Buffer.from(await file.arrayBuffer());
-    const node = await ipfs.init();
-    const output = new ipfs.MultiImage(node, original_name);
-    await output.addOriginal(obj);
+    const config_in = document.getElementById("config").innerText.split(/\r?\n/)
 
-    const cfg_parser = new Parser();
-    const configs = cfg_parser.parse();
+    const basquiat = await basquiat_lib.init();
+    const cid = await basquiat.batch_resize(file, config_in)
 
-    const original = await loadImage(URL.createObjectURL(file));
-    const dimensions = {
-        "width" : original.naturalWidth,
-        "height" : original.naturalHeight
-    }
 
-    const processor = new Processor(original, dimensions);
-    for (let i = 0; i<configs.length; i++){
-        console.log("Processing config : ", configs[i])
-        let result = await processor.resize(configs[i]);
-        await output.addChild(result.data, result.name);
-    }
-    await output.generate_html();
-    const cid = output.cid.toString();
     document.getElementById("cid").innerText = `${cid}`;
 
     const div = document.getElementById("output");
