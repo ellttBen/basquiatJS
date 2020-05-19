@@ -7,7 +7,7 @@
     "debug-bundle": "cd src && browserify --debug main.js > ../dist/bundle.js",
     "start": "npm run bundle && npm run release",
     "clean": "rm -rf dist/bundle.js",
-    "release": "npm run clean && npm run bundle && ipfs add -Qr dist",
+    "release": "npm run clean && npm run bundle && ipfs add -Qr dist | xargs printf 'http://localhost:8080/ipfs/%s\n",
     "debug-release": "npm run clean && npm run debug-bundle && ipfs add -Qr dist | xargs printf 'http://localhost:8080/ipfs/%s\n'"
   },
   "devDependencies": {
