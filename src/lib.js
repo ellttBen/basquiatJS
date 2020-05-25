@@ -11,14 +11,15 @@ class Basquiat {
         this.node = await ipfs.init();
     }
 
-    async batch_resize(image, config, render_html=true){
-        const image_name = image.name;
-        const obj = Buffer.from(await image.arrayBuffer());
+    async batch_resize_buffer(buffer, image_name, config, render_html=true){
+        // const image_name = image.name;
+        const obj = buffer;
         const output = new ipfs.MultiImage(this.node, image_name);
         await output.addOriginal(obj);
         const parser = new Parser(config);
         const configs = parser.parse();
-        const original = await loadImage(URL.createObjectURL(image));
+        const blob = new Blob([buffer])
+        const original = await loadImage(URL.createObjectURL(blob));
 
         const dimensions = {
             "width" : original.naturalWidth,

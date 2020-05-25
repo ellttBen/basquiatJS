@@ -21,8 +21,10 @@ async function render(){
     const config_in = document.getElementById("config").innerText.split(/\r?\n/)
 
     const basquiat = await basquiat_lib.init();
-    const cid = await basquiat.batch_resize(file, config_in)
+    // const cid = await basquiat.batch_resize(file, config_in)
 
+    const obj = Buffer.from(await file.arrayBuffer());
+    const cid = await basquiat.batch_resize_buffer(obj, file.name, config_in);
 
     document.getElementById("cid").innerText = `${cid}`;
 

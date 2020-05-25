@@ -1,7 +1,9 @@
 {
   "name": "basquiatjs",
-  "version": "0.1.0",
-  "private": true,
+  "description": "A JavaScript implementation of basquiat, built on top of js-ipfs and pica.",
+  "author": "Elliott Benisty <elliott.benisty@gmail.com> (https://github.com/ellttBen)",
+  "version": "0.1.1",
+  "private": false,
   "scripts": {
     "bundle": "cd src && browserify demo.js > ../dist/bundle.js",
     "debug-bundle": "cd src && browserify --debug demo.js > ../dist/bundle.js",
@@ -11,14 +13,15 @@
     "debug-release": "npm run clean && npm run debug-bundle && ipfs add -Qr dist | xargs printf 'http://localhost:8080/ipfs/%s\n'"
   },
   "devDependencies": {
-    "browserify": "^16.5.1",
-    "pica": "^5.1.0",
-    "ipfs": "^0.43.3"
+    "browserify": "^16.5.1"
   },
   "browser": "basquiatJS/src/index.html",
   "dependencies": {
+    "pica": "^5.1.0",
+    "ipfs": "^0.43.3",
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babelify": "^10.0.0"
-  }
+  },
+  "main": "src/index.js"
 }
