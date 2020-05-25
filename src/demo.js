@@ -4,7 +4,7 @@ const ipfs = require('./MultiImage');
 const Parser = require('./cfgParser');
 const Processor = require('./ImageProcessing');
 
-const basquiat_lib = require('./lib');
+const basquiat = require('./lib')();
 
 
 
@@ -20,7 +20,7 @@ async function render(){
     const file = document.getElementById("input").files[0];
     const config_in = document.getElementById("config").innerText.split(/\r?\n/)
 
-    const basquiat = await basquiat_lib.init();
+    // const basquiat = await basquiat_lib.init();
     // const cid = await basquiat.batch_resize(file, config_in)
 
     const obj = Buffer.from(await file.arrayBuffer());
